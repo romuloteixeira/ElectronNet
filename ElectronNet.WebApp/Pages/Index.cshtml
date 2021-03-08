@@ -1,0 +1,41 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr class="d-flex">
+                <th scope="col" class="col-sm-2">Id</th>
+                <th scope="col" class="col-sm-6">Process Name</th>
+                <th scope="col" class="col-sm-4 text-right">Physical Memory</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Processes)
+            {
+                <tr class="d-flex">
+                    <td class="col-sm-2" scope="row">@item.Id</td>
+                    <td class="col-sm-6" scope="row">
+                        @try
+                        {
+                            @item.MainModule.ModuleName
+                        }
+                        catch
+                        {
+                            @item.ProcessName
+                        }
+                </td>
+                <td class="col-sm-4 text-right" scope="row">@item.WorkingSet64</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

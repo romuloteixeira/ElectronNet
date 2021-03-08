@@ -1,13 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ElectronNET.API;
 
-namespace ElectronNet.API
+namespace ElectronNet.WebApp
 {
     public class Program
     {
@@ -20,6 +15,12 @@ namespace ElectronNet.API
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    //todo: Electron
+                    webBuilder.UseElectron(args);
+                    //todo: Electron
+                    webBuilder.UseEnvironment("Development");
+
+
                     webBuilder.UseStartup<Startup>();
                 });
     }
