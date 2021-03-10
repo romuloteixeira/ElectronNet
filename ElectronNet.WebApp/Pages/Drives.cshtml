@@ -1,0 +1,21 @@
+﻿@page
+@model ElectronNet.WebApp.Pages.DrivesModel
+@{
+}
+<a class="btn btn-light" asp-page="./Index">Back to Index</a>
+
+<div class="table-bordered">
+    @foreach (var drive in Model.AllDrives)
+    {
+        <div class="alert-info">Drive @drive.Name</div>
+        <div style="padding-left: 5em">Drive type: @drive.DriveType</div>
+        @if (drive.IsReady)
+        {
+            <div style="padding-left: 5em">Volume label: @drive.VolumeLabel</div>
+            <div style="padding-left: 5em">File system: @drive.DriveFormat</div>
+            <div style="padding-left: 5em">Available space to current user: {0, 15} bytes @drive.AvailableFreeSpace</div>
+            <div style="padding-left: 5em">Total available space: {0, 15} bytes @drive.TotalFreeSpace</div>
+            <div style="padding-left: 5em">Total size of drive: {0, 15} bytes @drive.TotalSize</div>
+        }
+    }
+</div>

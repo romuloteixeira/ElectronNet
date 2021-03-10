@@ -5,6 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using ElectronNET.API;
+using ElectronNET.API.Entities;
+using System.Runtime.InteropServices;
+using System.Linq;
 
 namespace ElectronNet.WebApp
 {
@@ -56,8 +60,44 @@ namespace ElectronNet.WebApp
             }
         }
 
+        private void CreateMenu()
+        {
+            //var isMac = RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
+            //MenuItem[] menu = null;
+
+            //var appMenu = new MenuItem[]
+            //{
+            //    new MenuItem{ Role = MenuRole.about},
+            //    new MenuItem{ Type = MenuType.separator},
+            //    new MenuItem{ Role = MenuRole.services},
+            //    new MenuItem{ Type = MenuType.separator},
+            //    new MenuItem{ Role = MenuRole.hide},
+            //    new MenuItem{ Role = MenuRole.hideothers},
+            //    new MenuItem{ Role = MenuRole.unhide},
+            //    new MenuItem{ Type = MenuType.separator},
+            //    new MenuItem{ Role = MenuRole.quit},
+            //};
+
+            //var fileMenu = new MenuItem[]
+            //{
+            //    new MenuItem { Label = "Save As...", Type = MenuType.normal, Click = async () => {
+            //        var mainWindow = Electron.WindowManager.BrowserWindows.First();
+            //        var options = new SaveDialogOptions
+            //        {
+            //            Filters = new FileFilter[]
+            //            {
+            //                new FileFilter{Name= "CSV Files", Extensions = new string.}
+            //            }
+            //        };
+            //    } 
+            //    },
+            //};
+        }
+
+
         private async void CreateWindow()
         {
+            CreateMenu();
             var window = await Electron.WindowManager.CreateWindowAsync();
             window.OnClosed += () =>
             {

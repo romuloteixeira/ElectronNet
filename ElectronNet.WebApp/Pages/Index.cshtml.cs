@@ -18,12 +18,12 @@ namespace ElectronNet.WebApp.Pages
 
         public void OnGet()
         {
-            var items = Process
+            Processes = Process
                             .GetProcesses()
                             .Where(p => !string.IsNullOrEmpty(p.ProcessName)
                                         //&& !p.ProcessName.Length
-                                        );
-            Processes = items.ToList();
+                                        )
+                            .ToList();
         }
     }
 }
